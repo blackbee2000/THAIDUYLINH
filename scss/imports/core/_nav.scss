@@ -1,0 +1,192 @@
+nav{
+    width: 100%;
+    height: 100vh;
+    background-color: $black-cl;
+    z-index: 100;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform:  translateY(-100%);
+    transition: $t ease-in-out;
+
+    &.active{
+        transform: translateY(0);
+        transition: all $t ease-in-out;
+
+        .menu{
+            li{
+                &:first-child{
+                    transition: letter-spacing 0.3s ease-in-out, transform $t ease-in-out, opacity $t ease-in-out, visibility $t ease-in-out;
+                    transition-delay: 0.2s;
+                    transform: translateY(0);
+                    opacity: 1;
+                    visibility: inherit;
+                }
+                &:nth-child(2){
+                   transition: letter-spacing 0.3s ease-in-out, transform $t ease-in-out, opacity $t ease-in-out, visibility $t ease-in-out;
+                    transition-delay: 0.4s;
+                    transform: translateY(0);
+                    opacity: 1;
+                    visibility: inherit;
+                }
+                &:last-child{
+                   transition: letter-spacing 0.3s ease-in-out, transform $t ease-in-out, opacity $t ease-in-out, visibility $t ease-in-out;
+                    transition-delay: 0.6s;
+                    transform: translateY(0);
+                    opacity: 1;
+                    visibility: inherit;
+                }
+            }
+        }
+
+        .info{
+            &_contact, &_social{
+                h3{
+                    transition: all $t ease-in-out;
+                    transition-delay: 0.8s;
+                    transform: translateY(0);
+                    opacity: 1;
+                    visibility: inherit;
+                }
+    
+                li{ 
+                    a{
+                        transition: all $t ease-in-out;
+                        transition-delay: 1s;
+                        transform: translateY(0);
+                        opacity: 1;
+                        visibility: inherit;
+                    }
+                }
+    
+            }
+        }
+    }
+
+    .container{
+        padding: 0 100px 0 100px;
+    }
+
+    .menu{
+        display: inline-block;
+        list-style: none;
+        li{
+            @include text(100px, FR, normal, $white-cl, uppercase);
+            padding-bottom: 10px;
+            transition: letter-spacing 0.3s ease-in-out, transform $t ease-in-out, opacity $t ease-in-out, visibility $t ease-in-out;
+            text-decoration: none;
+            transform: scale(1);
+            width: max-content;
+
+            &::before{
+                content: '';    
+                position: absolute;
+                width: 100%;
+                height: 3px;
+                background-color: $white-cl;
+                bottom: 50%;
+                left: 0;
+                transform-origin: right;
+                transform: scaleX(0);
+                transition: transform $t ease-in-out;
+            }
+
+            &:hover{
+                transition-delay: 0.2s !important;
+                letter-spacing: 10px;
+                color: transparent;
+                -webkit-text-stroke: 0.5px $white-cl;
+                transition: letter-spacing 0.3s ease-in-out, transform $t ease-in-out, opacity $t ease-in-out, visibility $t ease-in-out;
+
+                &::before{
+                    transform-origin: left;
+                    transition: transform $t ease-in-out;
+                    transform: scaleX(1);
+                }
+            }
+
+            &:first-child{
+                transition: letter-spacing 0.3s ease-in-out, transform $t ease-in-out, opacity $t ease-in-out, visibility $t ease-in-out;
+                transition-delay: 0.2s;
+                transform: translateY(30px);
+                opacity: 0;
+                visibility: hidden;
+            }
+            &:nth-child(2){
+                transition: letter-spacing 0.3s ease-in-out, transform $t ease-in-out, opacity $t ease-in-out, visibility $t ease-in-out;
+                transition-delay: 0.4s;
+                transform: translateY(30px);
+                opacity: 0;
+                visibility: hidden;
+            }
+            &:last-child{
+                transition: letter-spacing 0.3s ease-in-out, transform $t ease-in-out, opacity $t ease-in-out, visibility $t ease-in-out;
+                transition-delay: 0.6s;
+                transform: translateY(30px);
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    }
+
+    .info{
+        margin-top: 50px;
+        display: flex;
+        
+        ul{
+            display: block;
+            list-style: none;
+        }
+        &_contact, &_social{
+            h3{
+                @include text(20px, FR, normal, $white-cl, uppercase);
+                padding-bottom: 20px;
+                transition: all $t ease-in-out;
+                transition-delay: 0.8s;
+                transform: translateY(30px);
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            li{ 
+                padding-top: 10px;
+            
+                a{
+                    transition: all $t ease-in-out;
+                    position: relative;
+                    @include text(16px, FR, normal, $white-cl, none);
+                    transition-delay: 1s;
+                    transform: translateY(30px);
+                    opacity: 0;
+                    visibility: hidden;
+
+                    &::before{
+                        content: '';
+                        position: absolute;
+                        width: 100%;
+                        height: 2px;
+                        background-color: $white-cl;
+                        bottom: -3px;
+                        left: 0;
+                        transform-origin: right;
+                        transform: scaleX(0);
+                        transition: transform $t ease-in-out;
+                    }
+    
+                    &:hover{
+                        &::before{
+                            transform-origin: left;
+                            transition: transform $t ease-in-out;
+                            transform: scaleX(1);
+                        }
+                    }
+                }
+            }
+
+        }
+        &_contact{
+            margin-right: 100px;
+        }
+    }
+}

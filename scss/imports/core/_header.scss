@@ -1,0 +1,207 @@
+body{
+    overflow: hidden;
+
+    &.activeStart{
+        overflow: inherit !important;
+    }
+
+    &.activeMenu{
+        overflow: hidden !important;
+    }
+}
+
+header{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 200000;
+    transition: all $t ease-in-out;
+    background-color: $black-cl;
+
+    &.activeStart{
+        background-color: transparent !important;
+        height: 100px !important;
+        z-index: 100 !important;
+
+        .logo{
+            position: absolute !important;
+            top: 50% !important;
+            left: 10px !important;
+            transform: translateY(-50%) !important;
+            opacity: 1 !important;
+            visibility: inherit !important;
+            transition: all $t ease-in-out !important; 
+            width: 65px !important;
+            height: 65px !important;
+
+            h1{
+                @include text(24px !important, FR !important, bold !important, $white-cl !important, uppercase !important);
+                font-weight: bold !important;
+                transition: all $t ease-in-out !important; 
+
+                &::after{
+                    @include text(24px !important, FR !important, bold !important, $white-cl !important, uppercase !important);
+                    font-weight: bold !important;
+                    transition: all $t ease-in-out !important; 
+                }
+            }
+        }
+
+        .btn_menu{
+            opacity: 1 !important;
+            visibility: inherit !important;
+        }
+    }
+
+    &.activeMenu{
+        .container-fluid{
+            justify-content: end;
+
+            .logo{
+                opacity: 0 !important;
+                visibility: hidden !important;
+                transition: all $t ease-in-out !important; 
+            }
+        }
+    }
+
+    .container-fluid{
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: all $t ease-in-out;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+
+        // Logo
+        .logo{
+            transition: all $t ease-in-out;
+            // For loading
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border: 2px solid $white-cl;
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+
+            h1{
+                @include text(5rem, FR, bold, $white-cl, uppercase);
+                font-weight: bold;
+                transition: all $t ease-in-out;
+                
+                &::after{
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    @include text(5rem, FR, bold, $white-cl, uppercase);
+                    content: "";
+                    animation: typeWritterAnimation 1s linear 1;
+                    animation-fill-mode: forwards;
+                }
+            }
+        }
+
+        .btn_menu{
+            width: 30px;
+            height: 25px;
+            position: relative;
+            transform: rotate(0deg);
+            transition: all $t ease-in-out;
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            // For loading
+            opacity: 0;
+            visibility: hidden;
+
+            span{
+                display: block;
+                position: absolute;
+                height: 2px;
+                width: 100%;
+                background: $white-cl;
+                opacity: 1;
+                right: 0;
+                transform: rotate(0deg);
+                transition: all $t ease-in-out;
+
+                &:first-child{
+                    top: 0px;
+                    width: 50%;
+                }
+                &:nth-child(2), &:nth-child(3){
+                    top: 8px;
+                    width: 80%;
+                }
+                &:last-child{
+                    top: 16px;
+                }
+            }
+
+            &:hover{
+                transition: all $t ease-in-out;
+                span{
+                    &:first-child{
+                        width: 100%;
+                    }
+                    &:nth-child(2), &:nth-child(3){
+                       width: 100%;
+                    }
+                }
+            }
+
+            &.active{
+                span{
+                    &:first-child{
+                        top: 8px;
+                        width: 0%;
+                        left: 50%;
+                    }
+                    &:nth-child(2){
+                        width: 100%;
+                        transform: rotate(45deg);
+                    }
+                    &:nth-child(3){
+                        width: 100%;
+                        transform: rotate(-45deg);
+                    }
+                    &:last-child{
+                        top: 8px;
+                        width: 0%;
+                        left: 50%;
+                    }
+                }
+
+                &:hover{
+                    span{
+                        &:nth-child(2){
+                            transform: rotate(225deg);
+                        }
+                        &:nth-child(3){
+                            transform: rotate(-225deg);
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+@keyframes typeWritterAnimation {
+    0%{
+        content: "";
+    }
+    50%{
+        content: "T";
+    }
+    100%{
+        content: "TL";
+    }
+}
+
